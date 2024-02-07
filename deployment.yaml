@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8-web-hello
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: k8-web-hello
+  template:
+    metadata:
+      labels:
+        app: k8-web-hello
+    spec:
+      containers:
+      - name: k8-web-hello
+        image: pooja648/k8-web-hello
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
